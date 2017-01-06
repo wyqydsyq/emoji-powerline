@@ -26,4 +26,4 @@ You will probably want to disable the default virtualenv prompt. Add to your [`i
 `set --export VIRTUAL_ENV_DISABLE_PROMPT 1`
 * Indicate vi mode.
 
-Ported from https://gist.github.com/agnoster/3712874.
+Forked from https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md#agnoster-1
