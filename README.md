@@ -4,6 +4,9 @@ Based on Agnoster, extended with emojis representing home and root directories. 
 
 Colours and emojis used are easily configurable at the top of `./fish_prompt.fish`
 
+![emoji-powerline theme](http://i.imgur.com/EnaT1QE.png)
+
+
 #### Characteristics
 
 * If you're under your home directory, "~" is replaced with "🏠"
