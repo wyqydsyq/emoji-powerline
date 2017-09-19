@@ -17,16 +17,18 @@
 
 set -g current_bg NONE
 
-set tab \u2007
-
-set icon_root \U1F4BB$tab
-set icon_home \U1F3E0$tab
+set icon_root 🌏
+set icon_home 🏠
 #set icon_root '/'
 #set icon_home '~'
 
-set colour_path 22AA44
-set colour_dirty AAEE44
-set colour_clean 1E8A70
+set colour_text_path 006272
+set colour_text_dirty 510C38
+set colour_text_clean 2A0095
+
+set colour_path 41C1D7
+set colour_dirty BE4D95
+set colour_clean 7E6FFF
 
 set segment_separator \uE0B0
 set segment_splitter \uE0B1
@@ -36,8 +38,8 @@ set right_segment_separator \uE0B0
 # ===========================
 
 set -g __fish_git_prompt_showdirtystate 'yes'
-set -g __fish_git_prompt_char_dirtystate '✱'
-set -g __fish_git_prompt_char_cleanstate '✔'
+set -g __fish_git_prompt_char_dirtystate '📂'
+set -g __fish_git_prompt_char_cleanstate '📁'
 
 function parse_git_dirty
   set -l submodule_syntax
@@ -141,7 +143,7 @@ function wrap_root
 end
 
 function prompt_dir -d "Display the current directory"
-  prompt_segment $colour_path black (string trim (string join " $segment_splitter " (string split '/' (string replace -r '^\/$' "$icon_root" (string replace -r '^\/(.+?)' "$icon_root/\$1" (string replace -r '^\~' "$icon_home" (string trim (prompt_pwd))))))))
+  prompt_segment $colour_path $colour_text_path (string trim (string join " $segment_splitter " (string split '/' (string replace -r '^\/$' "$icon_root" (string replace -r '^\/(.+?)' "$icon_root/\$1" (string replace -r '^\~' "$icon_home" (string trim (prompt_pwd))))))))
 end
 
 
@@ -156,9 +158,9 @@ function prompt_hg -d "Display mercurial state"
       if [ "$state" = "!" ]
         prompt_segment red white "$branch_symbol $branch ±"
       else if [ "$state" = "?" ]
-          prompt_segment $colour_clean black "$branch_symbol $branch ±"
+          prompt_segment $colour_clean $colour_text_clean "$branch_symbol $branch ±"
         else
-          prompt_segment $colour_dirty black "$branch_symbol $branch"
+          prompt_segment $colour_dirty $colour_text_dirty "$branch_symbol $branch"
       end
     end
   end
@@ -178,9 +180,9 @@ function prompt_git -d "Display the current git state"
     set branch_symbol \uE0A0
     set -l branch (string join " $segment_splitter " (string split '/' (echo $ref | sed  "s-refs/heads/-$branch_symbol -")))
     if [ "$dirty" = "$__fish_git_prompt_char_dirtystate" ]
-      prompt_segment $colour_dirty black "$branch $dirty"
+      prompt_segment $colour_dirty $colour_text_dirty "$branch $dirty"
     else
-      prompt_segment $colour_clean black "$branch $dirty"
+      prompt_segment $colour_clean $colour_text_clean "$branch $dirty"
     end
   end
 end
@@ -216,7 +218,7 @@ end
 
 function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
     if [ $RETVAL -ne 0 ]
-      prompt_segment black red "✘"
+      prompt_segment black red "⚠️ "
     end
 
     # if superuser (uid == 0)
