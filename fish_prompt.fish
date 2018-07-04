@@ -17,8 +17,9 @@
 
 set -g current_bg NONE
 
-set icon_root 🌏
-set icon_home 🏠
+set hard_space '\u2060'
+set icon_root '🌏'
+set icon_home '🏡'
 #set icon_root '/'
 #set icon_home '~'
 
@@ -145,7 +146,7 @@ function wrap_root
 end
 
 function prompt_dir -d "Display the current directory"
-  prompt_segment $colour_path $colour_text_path (string trim (string join " $segment_splitter " (string split '/' (string replace -r '^\/$' "$icon_root" (string replace -r '^\/(.+?)' "$icon_root/\$1" (string replace -r '^\~' "$icon_home" (string trim (prompt_pwd))))))))
+  prompt_segment $colour_path $colour_text_path (string trim (string join " $segment_splitter " (string split '/' (string replace -r '^\/$' "$icon_root$hard_space" (string replace -r '^\/(.+?)' "$icon_root/\$1" (string replace -r '^\~' "$icon_home$hard_space" (string trim (prompt_pwd))))))))
 end
 
 
