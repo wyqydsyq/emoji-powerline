@@ -22,6 +22,8 @@ set icon_home 🏠
 #set icon_root '/'
 #set icon_home '~'
 
+set prompt_text '→'
+
 set colour_text_path 006272
 set colour_text_dirty 510C38
 set colour_text_clean 2A0095
@@ -246,5 +248,8 @@ function fish_prompt
   type -q hg;  and prompt_hg
   type -q git; and prompt_git
   type -q svn; and prompt_svn
+  prompt_finish
+  echo ""
+  prompt_segment $colour_path $colour_text_path $prompt_text
   prompt_finish
 end
