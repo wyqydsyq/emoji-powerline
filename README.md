@@ -10,7 +10,8 @@ Get the full path in your prompt by running:
 set -U fish_prompt_pwd_dir_length 0
 ```
 
-![emoji-powerline theme](https://i.imgur.com/RfnCgLV.png)
+#### Preview
+![emoji-powerline theme](https://i.imgur.com/62aD4l9.png)
 
 #### Characteristics
 
